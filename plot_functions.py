@@ -539,8 +539,8 @@ def plot_surge_emission_explication_2():
     fig = go.Figure()
 
     # MIL-STD-1275-F/E with gray shaded area outside
-    fig.add_trace(go.Scatter(x=t_MIL * 1e3, y=V_upper_MIL_F, mode='lines', name='MIL-STD-1275-F/E', line=dict(color='black'), legendgroup='MIL-STD-1275-F/E',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
-    fig.add_trace(go.Scatter(x=t_MIL * 1e3, y=V_lower_MIL_F, mode='lines', line=dict(color='black'), showlegend=False, legendgroup='MIL-STD-1275-F/E',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_MIL * 1e3, y=V_upper_MIL_F, mode='lines', name='MIL-STD-1275-F/E', line=dict(color='black'), legendgroup='MIL-STD-1275-F/E',hovertemplate='Time: %{x:.2f} ms<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_MIL * 1e3, y=V_lower_MIL_F, mode='lines', line=dict(color='black'), showlegend=False, legendgroup='MIL-STD-1275-F/E',hovertemplate='Time: %{x:.2f} ms<br>Voltage: %{y:.2f} V<extra></extra>'))
 
     # Area above the upper limit
     max_y = 110
