@@ -563,20 +563,20 @@ def plot_surge_emission_explication_2():
     ))
 
     # MIL-STD-1275-D
-    fig.add_trace(go.Scatter(x=t_MIL * 1e3, y=V_upper_MIL_D, mode='lines', name='MIL-STD-1275-D', line=dict(color='blue', dash='dash'), legendgroup='MIL-STD-1275-D',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
-    fig.add_trace(go.Scatter(x=t_MIL * 1e3, y=V_lower_MIL_D, mode='lines', line=dict(color='blue', dash='dash'), showlegend=False, legendgroup='MIL-STD-1275-D',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_MIL * 1e3, y=V_upper_MIL_D, mode='lines', name='MIL-STD-1275-D', line=dict(color='blue', dash='dash'), legendgroup='MIL-STD-1275-D',hovertemplate='Time: %{x:.2f} ms<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_MIL * 1e3, y=V_lower_MIL_D, mode='lines', line=dict(color='blue', dash='dash'), showlegend=False, legendgroup='MIL-STD-1275-D',hovertemplate='Time: %{x:.2f} ms<br>Voltage: %{y:.2f} V<extra></extra>'))
 
     # ISO 7637-2 Severity I/II (Linked upper and lower)
-    fig.add_trace(go.Scatter(x=t_ISO * 1e3, y=V_ISO_I_II_upper, mode='lines', name='ISO 7637-2 (2011) <br>Sévérité I/II', line=dict(color='green'), legendgroup='ISO I/II',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
-    fig.add_trace(go.Scatter(x=t_ISO * 1e3, y=V_ISO_I_II_lower, mode='lines', line=dict(color='green'), showlegend=False, legendgroup='ISO I/II',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_ISO * 1e3, y=V_ISO_I_II_upper, mode='lines', name='ISO 7637-2 (2011) <br>Sévérité I/II', line=dict(color='green'), legendgroup='ISO I/II',hovertemplate='Time: %{x:.2f} ms<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_ISO * 1e3, y=V_ISO_I_II_lower, mode='lines', line=dict(color='green'), showlegend=False, legendgroup='ISO I/II',hovertemplate='Time: %{x:.2f} ms<br>Voltage: %{y:.2f} V<extra></extra>'))
 
     # ISO 7637-2 Severity III (Linked upper and lower)
-    fig.add_trace(go.Scatter(x=t_ISO * 1e3, y=V_ISO_III_upper, mode='lines', name='ISO 7637-2 (2011) <br>Sévérité III', line=dict(color='orange'), legendgroup='ISO III',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
-    fig.add_trace(go.Scatter(x=t_ISO * 1e3, y=V_ISO_III_lower, mode='lines', line=dict(color='orange'), showlegend=False, legendgroup='ISO III',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_ISO * 1e3, y=V_ISO_III_upper, mode='lines', name='ISO 7637-2 (2011) <br>Sévérité III', line=dict(color='orange'), legendgroup='ISO III',hovertemplate='Time: %{x:.2f} ms<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_ISO * 1e3, y=V_ISO_III_lower, mode='lines', line=dict(color='orange'), showlegend=False, legendgroup='ISO III',hovertemplate='Time: %{x:.2f} ms<br>Voltage: %{y:.2f} V<extra></extra>'))
 
     # ISO 7637-2 Severity IV (Linked upper and lower)
-    fig.add_trace(go.Scatter(x=t_ISO * 1e3, y=V_ISO_IV_upper, mode='lines', name='ISO 7637-2 (2011) <br>Sévérité IV', line=dict(color='red'), legendgroup='ISO IV',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
-    fig.add_trace(go.Scatter(x=t_ISO * 1e3, y=V_ISO_IV_lower, mode='lines', line=dict(color='red'), showlegend=False, legendgroup='ISO IV',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_ISO * 1e3, y=V_ISO_IV_upper, mode='lines', name='ISO 7637-2 (2011) <br>Sévérité IV', line=dict(color='red'), legendgroup='ISO IV',hovertemplate='Time: %{x:.2f} ms<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_ISO * 1e3, y=V_ISO_IV_lower, mode='lines', line=dict(color='red'), showlegend=False, legendgroup='ISO IV',hovertemplate='Time: %{x:.2f} ms<br>Voltage: %{y:.2f} V<extra></extra>'))
 
     # Layout with Enhanced Styling
     fig.update_layout(
