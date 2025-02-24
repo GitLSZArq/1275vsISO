@@ -734,8 +734,8 @@ def plot_surge_immunity_explication_1():
     fig = go.Figure()
 
     # MIL-STD-1275-F/E with gray shaded area outside
-    fig.add_trace(go.Scatter(x=t_MIL * 1e3, y=V_upper_MIL, mode='lines', name='MIL-STD-1275-F/E', line=dict(color='black'), legendgroup='MIL-STD-1275-F/E',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
-    fig.add_trace(go.Scatter(x=t_MIL * 1e3, y=V_lower_MIL, mode='lines', line=dict(color='black'), showlegend=False, legendgroup='MIL-STD-1275-F/E',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_MIL * 1e3, y=V_upper_MIL, mode='lines', name='MIL-STD-1275-F/E', line=dict(color='black'), legendgroup='MIL-STD-1275-F/E',hovertemplate='Time: %{x:.2f} ms<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_MIL * 1e3, y=V_lower_MIL, mode='lines', line=dict(color='black'), showlegend=False, legendgroup='MIL-STD-1275-F/E',hovertemplate='Time: %{x:.2f} ms<br>Voltage: %{y:.2f} V<extra></extra>'))
 
     # Gray shaded area outside MIL-STD-1275-F/E limits
     max_y = 220
@@ -763,17 +763,17 @@ def plot_surge_immunity_explication_1():
     fig.add_trace(go.Scatter(
         x=t_ISO_zone_No_Centralized_Load_Dump * 1e3, y=V_upper_No_Centralized_Load_Dump,
         mode='lines',line=dict(color='Green'),
-        name='ISO No Centralized Load Dump <br>ISO 16750-2 (2023)', legendgroup='ISO No Load Dump',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'
+        name='ISO No Centralized Load Dump <br>ISO 16750-2 (2023)', legendgroup='ISO No Load Dump',hovertemplate='Time: %{x:.2f} ms<br>Voltage: %{y:.2f} V<extra></extra>'
     ))
 
     fig.add_trace(go.Scatter(
         x=t_ISO_zone_No_Centralized_Load_Dump * 1e3, y=V_lower_No_Centralized_Load_Dump,
-        mode='lines',line=dict(color='Green'), legendgroup='ISO No Load Dump',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>', showlegend=False
+        mode='lines',line=dict(color='Green'), legendgroup='ISO No Load Dump',hovertemplate='Time: %{x:.2f} ms<br>Voltage: %{y:.2f} V<extra></extra>', showlegend=False
     ))
 
     # ISO Centralized Load Dump (Dashed blue line)
-    fig.add_trace(go.Scatter(x=t_ISO_zone_Centralized_Load_Dump * 1e3, y=V_clamped_upper, mode='lines', name='ISO Centralized Load Dump <br>ISO 16750-2 (2023)', line=dict(color='blue', dash='dash'), legendgroup='ISO Centralized Load Dump',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
-    fig.add_trace(go.Scatter(x=t_ISO_zone_Centralized_Load_Dump * 1e3, y=V_clamped_upper, mode='lines', showlegend=False, line=dict(color='blue', dash='dash'), legendgroup='ISO Centralized Load Dump',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_ISO_zone_Centralized_Load_Dump * 1e3, y=V_clamped_upper, mode='lines', name='ISO Centralized Load Dump <br>ISO 16750-2 (2023)', line=dict(color='blue', dash='dash'), legendgroup='ISO Centralized Load Dump',hovertemplate='Time: %{x:.2f} ms<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_ISO_zone_Centralized_Load_Dump * 1e3, y=V_clamped_upper, mode='lines', showlegend=False, line=dict(color='blue', dash='dash'), legendgroup='ISO Centralized Load Dump',hovertemplate='Time: %{x:.2f} ms<br>Voltage: %{y:.2f} V<extra></extra>'))
 
     # Dotted lines for key voltage levels
     voltage_levels = [58, 33, 20, 18, 151, 202]
@@ -854,8 +854,8 @@ def plot_surge_immunity_explication_2():
     fig = go.Figure()
 
     # MIL-STD-1275-F/E with gray shaded area outside
-    fig.add_trace(go.Scatter(x=t_MIL * 1e3, y=V_upper_MIL, mode='lines', name='MIL-STD-1275-F/E', line=dict(color='black'), legendgroup='MIL-STD-1275-F/E',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
-    fig.add_trace(go.Scatter(x=t_MIL * 1e3, y=V_lower_MIL, mode='lines', line=dict(color='black'), showlegend=False, legendgroup='MIL-STD-1275-F/E',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_MIL * 1e3, y=V_upper_MIL, mode='lines', name='MIL-STD-1275-F/E', line=dict(color='black'), legendgroup='MIL-STD-1275-F/E',hovertemplate='Time: %{x:.2f} ms<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_MIL * 1e3, y=V_lower_MIL, mode='lines', line=dict(color='black'), showlegend=False, legendgroup='MIL-STD-1275-F/E',hovertemplate='Time: %{x:.2f} ms<br>Voltage: %{y:.2f} V<extra></extra>'))
 
     # Gray shaded area outside MIL-STD-1275-F/E limits
     max_y = 220
@@ -884,11 +884,11 @@ def plot_surge_immunity_explication_2():
         x=np.concatenate((t_ISO_zone * 1e3, t_ISO_zone[::-1] * 1e3)),
         y=np.concatenate((V_ISO_zone_upper, V_ISO_zone_lower[::-1])),
         fill='toself', fillcolor='orange', opacity=0.5, line=dict(color='rgba(0,0,0,0)'),
-        name='ISO No Centralized Load Dump <br>ISO 16750-2 (2023)', legendgroup='ISO No Load Dump',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'
+        name='ISO No Centralized Load Dump <br>ISO 16750-2 (2023)', legendgroup='ISO No Load Dump',hovertemplate='Time: %{x:.2f} ms<br>Voltage: %{y:.2f} V<extra></extra>'
     ))
 
     # ISO Centralized Load Dump (Dashed blue line)
-    fig.add_trace(go.Scatter(x=t_ISO_line * 1e3, y=V_ISO_line, mode='lines', name='ISO Centralized Load Dump <br>ISO 16750-2 (2023)', line=dict(color='blue', dash='dash'), legendgroup='ISO Centralized Load Dump',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_ISO_line * 1e3, y=V_ISO_line, mode='lines', name='ISO Centralized Load Dump <br>ISO 16750-2 (2023)', line=dict(color='blue', dash='dash'), legendgroup='ISO Centralized Load Dump',hovertemplate='Time: %{x:.2f} ms<br>Voltage: %{y:.2f} V<extra></extra>'))
 
     # Dotted lines for key voltage levels
     voltage_levels = [58, 33, 20, 18, 151, 202]
