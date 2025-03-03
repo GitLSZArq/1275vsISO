@@ -1,4 +1,18 @@
 import streamlit as st
+
+# Streamlit App Configuration
+st.set_page_config(page_title="Voltage Standard Curve Viewer", layout="wide")
+
+st.markdown(
+    """
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    """,
+    unsafe_allow_html=True
+)
+
+# Title
+st.title("Voltage Standard Curve Viewer")
+
 from plot_functions import (
     plot_spike_emission_explication_2,
     plot_spike_immunity_explication_2,
@@ -11,11 +25,9 @@ from plot_functions import (
     plot_spike_immunity_explication_1
 )
 
-# Streamlit App Configuration
-st.set_page_config(page_title="Voltage Standard Curve Viewer", layout="wide")
 
-# Title
-st.title("Voltage Standard Curve Viewer")
+
+
 
 # Sidebar for Curve Type Selection
 curve_category = st.sidebar.selectbox(
