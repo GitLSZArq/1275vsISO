@@ -3,16 +3,22 @@ import streamlit as st
 # Streamlit App Configuration
 st.set_page_config(page_title="Voltage Standard Curve Viewer", layout="wide")
 
+# Inject meta viewport and CSS to force full height
 st.markdown(
     """
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, shrink-to-fit=no">
     <style>
-      html, body, [data-testid="stAppViewContainer"] {
-         height: 100% !important;
-         margin: 0;
-         padding: 0;
-         overflow: hidden;
-      }
+        html, body {
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        /* This targets the main Streamlit container; the test id may change in future versions */
+        [data-testid="stAppViewContainer"] {
+            height: 100vh !important;
+            min-height: 100vh !important;
+        }
     </style>
     """,
     unsafe_allow_html=True
