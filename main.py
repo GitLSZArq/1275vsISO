@@ -6,6 +6,14 @@ st.set_page_config(page_title="Voltage Standard Curve Viewer", layout="wide")
 st.markdown(
     """
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, shrink-to-fit=no">
+    <style>
+      html, body, [data-testid="stAppViewContainer"] {
+         height: 100% !important;
+         margin: 0;
+         padding: 0;
+         overflow: hidden;
+      }
+    </style>
     """,
     unsafe_allow_html=True
 )

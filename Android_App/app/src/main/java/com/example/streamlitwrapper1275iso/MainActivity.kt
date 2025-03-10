@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
 
                             // Some sites only respond well to a mobile user agent.
                             // You can try forcing a typical mobile user agent:
-                            // settings.userAgentString = "Mozilla/5.0 (Linux; Android 10; Pixel 3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.93 Mobile Safari/537.36"
+                            settings.userAgentString = "Mozilla/5.0 (Linux; Android 10; Pixel 3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.93 Mobile Safari/537.36"
 
                             // Optionally enable zoom controls if needed
                             // settings.setSupportZoom(true)
