@@ -33,15 +33,22 @@ class MainActivity : ComponentActivity() {
                             settings.domStorageEnabled = true
 
 
-
                             // Tell the WebView to use a wide viewport and load pages in overview mode
                             settings.useWideViewPort = true
                             settings.loadWithOverviewMode = true
 
+                            // Try an initial scale if the page is still small
+                            // 0 means "fit screen width"; 100 means "actual size" (like 100%)
+                            // this.setInitialScale(50)
+
+                            // Some sites only respond well to a mobile user agent.
+                            // You can try forcing a typical mobile user agent:
+                            // settings.userAgentString = "Mozilla/5.0 (Linux; Android 10; Pixel 3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.93 Mobile Safari/537.36"
+
                             // Optionally enable zoom controls if needed
-                            settings.setSupportZoom(true)
-                            settings.builtInZoomControls = true
-                            settings.displayZoomControls = false
+                            // settings.setSupportZoom(true)
+                            // settings.builtInZoomControls = true
+                            // settings.displayZoomControls = false
 
                             webViewClient = WebViewClient()
                             loadUrl("https://1275vsiso-mqhmnvbwhnptp8dacpt5a5.streamlit.app/")

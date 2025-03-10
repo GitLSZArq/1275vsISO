@@ -5,7 +5,7 @@ st.set_page_config(page_title="Voltage Standard Curve Viewer", layout="wide")
 
 st.markdown(
     """
-    <meta name="viewport" content="width=device-width, initial-scale=1.0", user-scalable=yes, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, shrink-to-fit=no">
     """,
     unsafe_allow_html=True
 )
