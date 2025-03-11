@@ -115,5 +115,6 @@ elif curve_category == "Startup":
 # Display the Plot
 if fig is not None:
     st.plotly_chart(fig, use_container_width=True)
+    fig.update_layout(autosize=True)
 else:
     st.write("Please select a valid curve type and understanding option.")

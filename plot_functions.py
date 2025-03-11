@@ -368,8 +368,8 @@ def plot_spike_immunity_explication_2():
         ),
         hovermode='closest',
         yaxis_autorange=True,  # Automatically fit y-axis to the selected data
-        width=1000,
-        height=800
+        # width=1000,
+        # height=800
     )
 
     return fig
