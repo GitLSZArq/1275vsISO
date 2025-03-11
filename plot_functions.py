@@ -130,7 +130,7 @@ def plot_spike_emission_explication_2():
         hovermode='closest',
         legend=dict(font=dict(size=14, color='black')),
         yaxis_autorange=True,  # Automatically fit y-axis to the selected data
-        width=1000,
+        # width=1000,
         height=800
     )
 
@@ -369,7 +369,7 @@ def plot_spike_immunity_explication_2():
         hovermode='closest',
         yaxis_autorange=True,  # Automatically fit y-axis to the selected data
         # width=1000,
-        # height=800
+        height=800
     )
 
     return fig
@@ -487,7 +487,7 @@ def plot_spike_immunity_explication_1():
         hovermode='closest',
         yaxis_autorange=True,  # Automatically fit y-axis to the selected data
         #width=1000,
-        #height=800
+        height=800
     )
 
     return fig
@@ -614,7 +614,7 @@ def plot_surge_emission_explication_2():
         legend=dict(font=dict(size=14, color='black')),
         yaxis_autorange=True,  # Automatically fit y-axis to the selected data
         #width=1200,
-        #height=800
+        height=800
     )
 
     return fig
@@ -821,7 +821,7 @@ def plot_surge_immunity_explication_1():
         legend=dict(font=dict(size=14, color='black')),
         yaxis_autorange=True,  # Automatically fit y-axis to the selected data
         #width=1200,
-        #height=1200
+        height=1200
     )
 
     return fig
@@ -936,7 +936,7 @@ def plot_surge_immunity_explication_2():
         legend=dict(font=dict(size=14, color='black')),
         yaxis_autorange=True,  # Automatically fit y-axis to the selected data
         #width=1200,
-        #height=1200
+        height=1200
     )
 
     return fig
@@ -1024,7 +1024,7 @@ def plot_ripple_emission_explication_2():
         legend=dict(font=dict(size=14, color='black')),
         yaxis_autorange=True,  # Automatically fit y-axis to the selected data
         #width=1200,
-        #height=1200
+        height=1200
     )
 
     return fig
@@ -1102,7 +1102,7 @@ def plot_ripple_immunity_explication_2():
         legend=dict(font=dict(size=14, color='black')),
         yaxis_autorange=True,  # Automatically fit y-axis to the selected data
         #width=1200,
-        #height=1200
+        height=1200
     )
 
     return fig
@@ -1232,7 +1232,7 @@ def plot_startup_explication_2():
         yaxis=dict(showgrid=True, gridcolor='darkgray', color='black', tickfont=dict(size=14, color='black')),
         legend=dict(font=dict(size=14, color='black')),
         #width=1200,
-        #height=1200
+        height=1200
     )
 
     return fig
