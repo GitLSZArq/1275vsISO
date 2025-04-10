@@ -1132,6 +1132,35 @@ def plot_startup_explication_2():
     t_MIL = np.concatenate((t1_MIL, t2_MIL, t3_MIL, t4_MIL, t5_MIL, t6_MIL))
     V_MIL = np.concatenate((V1_MIL, V2_MIL, V3_MIL, V4_MIL, V5_MIL, V6_MIL))
 
+
+    
+    # --------------------
+    # MIL-STD-461-d
+    # --------------------
+
+    # Définition des intervalles de temps
+    t1_MIL_D = np.linspace(-1, 0, 1000)    # De -1 s à 0 s
+    t2_MIL_D = np.linspace(0, 1, 1000)     # De 0 s à 1 s
+    t3_MIL_D = np.linspace(1, 2, 1000)     # De 1 s à 2 s
+    t4_MIL_D = np.linspace(9, 11, 1000)    # De 9 s à 11 s
+    t5_MIL_D = np.linspace(30, 31, 1000)   # De 30 s à 31 s
+    t6_MIL_D = np.linspace(31, 32, 1000)   # De 31 s à 32 s
+
+    # Correspondance des tensions
+    V1_MIL_D = np.full_like(t1_MIL, 25)    # 20 V
+    V2_MIL_D = np.full_like(t2_MIL, 6)    # 12 V
+    V3_MIL_D = np.full_like(t3_MIL, 16)    # 16 V
+    V4_MIL_D = np.full_like(t4_MIL, 16)    # 16 V
+    V5_MIL_D = np.full_like(t5_MIL, 16)    # 20 V
+    V6_MIL_D = np.full_like(t6_MIL, 25)    # 20 V
+
+    # Concatenation des intervalles de temps et des tensions
+    t_MIL_D = np.concatenate((t1_MIL_D, t2_MIL_D, t3_MIL_D, t4_MIL_D, t5_MIL_D, t6_MIL_D))
+    V_MIL_D = np.concatenate((V1_MIL_D, V2_MIL_D, V3_MIL_D, V4_MIL_D, V5_MIL_D, V6_MIL_D))
+
+
+
+
     # --------------------
     # ISO Cas I
     # --------------------
@@ -1173,6 +1202,7 @@ def plot_startup_explication_2():
     t_iso5_II = np.linspace(0.11, 10.11, 2000)  # Oscillation sur 10 s
     t_iso6_II = np.linspace(10.11, 10.21, 1000) # Montée finale sur 100 ms
     t_iso7_II = np.linspace(10.21, 11, 1000)    # Tension constante jusqu'à 11 s
+    t_iso8_II = np.linspace(11, 30, 1000)    
 
     # Tensions correspondantes
     V_iso2_II = np.linspace(24, 8, len(t_iso2))                 # Descente à 8 V
@@ -1181,11 +1211,11 @@ def plot_startup_explication_2():
     V_iso5_II = 15 + 1 * np.sin(omega_osc_I * (t_iso5_II - t_iso5_II[0]))  # Oscillation autour de 15 V
     V_iso6_II = np.linspace(15, 24, len(t_iso6_II))             # Montée finale
     V_iso7_II = np.full_like(t_iso7_II, 24)                     # 24 V constant
-    V_iso8_II = np.full_like(t_iso8, 24)                        # 24 V constant
+    V_iso8_II = np.full_like(t_iso8_II, 24)                        # 24 V constant
     V_iso9_II = np.full_like(t_iso9, 24)                        # 24 V constant
 
     # Concatenation
-    t_ISO_II = np.concatenate((t_iso1, t_iso2, t_iso3, t_iso4, t_iso5_II, t_iso6_II, t_iso7_II, t_iso8, t_iso9))
+    t_ISO_II = np.concatenate((t_iso1, t_iso2, t_iso3, t_iso4, t_iso5_II, t_iso6_II, t_iso7_II, t_iso8_II, t_iso9))
     V_ISO_II = np.concatenate((V_iso1, V_iso2_II, V_iso3_II, V_iso4_II, V_iso5_II, V_iso6_II, V_iso7_II, V_iso8_II, V_iso9_II))
 
     # --------------------
@@ -1211,6 +1241,9 @@ def plot_startup_explication_2():
 
     # MIL-STD-1275-F/E
     fig.add_trace(go.Scatter(x=t_MIL, y=V_MIL, mode='lines', name='MIL-STD-1275-F/E', line=dict(color='blue')))
+
+    # MIL-STD-1275-D
+    fig.add_trace(go.Scatter(x=t_MIL_D, y=V_MIL_D, mode='lines', name='MIL-STD-1275-D', line=dict(color='orange')))
 
     # ISO Cas I
     fig.add_trace(go.Scatter(x=t_ISO_I, y=V_ISO_I, mode='lines', name='ISO Cas I <br>ISO 16750-2 (2023)', line=dict(color='red')))
