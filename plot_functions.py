@@ -435,21 +435,21 @@ def plot_spike_immunity_explication_1():
     ))
 
     # ISO Pulse 2a
-    fig.add_trace(go.Scatter(x=t_pulse_2a_SevI_II * 1e6, y=V_pulse_2a_SevI_II, mode='lines+markers', name='ISO Pulse 2a (2011)<br>Sévérité I/II', line=dict(color='blue'), legendgroup='ISO Pulse 2a Sévérité I/II',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
-    fig.add_trace(go.Scatter(x=t_pulse_2a_SevIII * 1e6, y=V_pulse_2a_SevIII, mode='lines+markers', name='ISO Pulse 2a (2011)<br>Sévérité III', line=dict(color='orange'), legendgroup='ISO Pulse 2a Sévérité III',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
-    fig.add_trace(go.Scatter(x=t_pulse_2a_SevIV * 1e6, y=V_pulse_2a_SevIV, mode='lines+markers', name='ISO Pulse 2a (2011)<br>Sévérité IV', line=dict(color='purple'), legendgroup='ISO Pulse 2a Sévérité IV',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_pulse_2a_SevI_II * 1e6, y=V_pulse_2a_SevI_II, mode='lines+markers', name='ISO 7637-2 (2011)<br>Pulse 2a Sévérité I/II', line=dict(color='blue'), legendgroup='ISO Pulse 2a Sévérité I/II',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_pulse_2a_SevIII * 1e6, y=V_pulse_2a_SevIII, mode='lines+markers', name='ISO 7637-2 (2011)<br>Pulse 2a Sévérité III', line=dict(color='orange'), legendgroup='ISO Pulse 2a Sévérité III',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_pulse_2a_SevIV * 1e6, y=V_pulse_2a_SevIV, mode='lines+markers', name='ISO 7637-2 (2011)<br>Pulse 2a Sévérité IV', line=dict(color='purple'), legendgroup='ISO Pulse 2a Sévérité IV',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
 
 
     # ISO Pulse 3a
-    fig.add_trace(go.Scatter(x=t_pulse_3a_SevI_II * 1e6, y=V_pulse_3a_SevI_II, mode='lines+markers', name='ISO Pulse 3a (2011)<br>Sévérité I/II', line=dict(color='brown'), legendgroup='ISO Pulse 3a Sévérité I/II',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
-    fig.add_trace(go.Scatter(x=t_pulse_3a_SevIII * 1e6, y=V_pulse_3a_SevIII, mode='lines+markers', name='ISO Pulse 3a (2011)<br>Sévérité III', line=dict(color='pink'), legendgroup='ISO Pulse 3a Sévérité III',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
-    fig.add_trace(go.Scatter(x=t_pulse_3a_SevIV * 1e6, y=V_pulse_3a_SevIV, mode='lines+markers', name='ISO Pulse 3a (2011)<br>Sévérité IV', line=dict(color='navy'), legendgroup='ISO Pulse 3a Sévérité IV',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_pulse_3a_SevI_II * 1e6, y=V_pulse_3a_SevI_II, mode='lines+markers', name='ISO 7637-2 (2011)<br>Pulse 3a Sévérité I/II', line=dict(color='brown'), legendgroup='ISO Pulse 3a Sévérité I/II',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_pulse_3a_SevIII * 1e6, y=V_pulse_3a_SevIII, mode='lines+markers', name='ISO 7637-2 (2011)<br>Pulse 3a Sévérité III', line=dict(color='pink'), legendgroup='ISO Pulse 3a Sévérité III',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_pulse_3a_SevIV * 1e6, y=V_pulse_3a_SevIV, mode='lines+markers', name='ISO 7637-2 (2011)<br>Pulse 3a Sévérité IV', line=dict(color='navy'), legendgroup='ISO Pulse 3a Sévérité IV',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
 
 
     # ISO Pulse 3b
-    fig.add_trace(go.Scatter(x=t_pulse_3b_SevI_II * 1e6, y=V_pulse_3b_SevI_II, mode='lines+markers', name='ISO Pulse 3b (2011)<br>Sévérité I/II', line=dict(color='peachpuff'), legendgroup='ISO Pulse 3b Sévérité I/II',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
-    fig.add_trace(go.Scatter(x=t_pulse_3b_SevIII * 1e6, y=V_pulse_3b_SevIII, mode='lines+markers', name='ISO Pulse 3b (2011)<br>Sévérité III', line=dict(color='turquoise'), legendgroup='ISO Pulse 3b Sévérité III',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
-    fig.add_trace(go.Scatter(x=t_pulse_3b_SevIV * 1e6, y=V_pulse_3b_SevIV, mode='lines+markers', name='ISO Pulse 3b (2011)<br>Sévérité IV', line=dict(color='indigo'), legendgroup='ISO Pulse 3b Sévérité IV',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_pulse_3b_SevI_II * 1e6, y=V_pulse_3b_SevI_II, mode='lines+markers', name='ISO 7637-2 (2011)<br>Pulse 3b Sévérité I/II', line=dict(color='peachpuff'), legendgroup='ISO Pulse 3b Sévérité I/II',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_pulse_3b_SevIII * 1e6, y=V_pulse_3b_SevIII, mode='lines+markers', name='ISO 7637-2 (2011)<br>Pulse 3b Sévérité III', line=dict(color='turquoise'), legendgroup='ISO Pulse 3b Sévérité III',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
+    fig.add_trace(go.Scatter(x=t_pulse_3b_SevIV * 1e6, y=V_pulse_3b_SevIV, mode='lines+markers', name='ISO 7637-2 (2011)<br>Pulse 3b Sévérité IV', line=dict(color='indigo'), legendgroup='ISO Pulse 3b Sévérité IV',hovertemplate='Time: %{x:.2f} µs<br>Voltage: %{y:.2f} V<extra></extra>'))
 
 
     # Layout with enhanced styling
