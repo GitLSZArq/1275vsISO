@@ -118,3 +118,57 @@ if fig is not None:
     fig.update_layout(autosize=True)
 else:
     st.write("Please select a valid curve type and understanding option.")
+
+
+# Define the bilingual definitions as a dictionary
+definitions = {
+    "Functional Status Classification": {
+        "English": """
+**6 Functional Status Classification**
+
+**6.1 General**  
+This element describes the functional status of a DUT during and after a test. The minimum functional status shall be given in each test. An additional test requirement may be agreed between device supplier and vehicle manufacturer. Vehicle manufacturer and device supplier shall specify operations that are not allowed.
+
+**6.2 Class A**  
+All functions of the device/system perform as designed during and after the test.
+
+**6.3 Class B**  
+All functions of the device/system perform as designed during the test. However, one or more may go beyond the specified tolerance. All functions return automatically to within normal limits after the test. Memory functions shall remain Class A.
+
+**6.4 Class C**  
+One or more functions of a device/system do not perform as designed during the test but return automatically to normal operation after the test.
+
+**6.5 Class D**  
+One or more functions of a device/system do not perform as designed during the test and do not return to normal operation after the test until the device/system is reset by a simple “operator/use” action.
+
+**6.6 Class E**  
+One or more functions of a device/system do not perform as designed during and after the test and cannot be returned to proper operation without repairing or replacing the device/system.
+        """,
+        "French": """
+**6 Classification du Statut Fonctionnel**
+
+**6.1 Général**  
+Cet élément décrit le statut fonctionnel d’un DUT pendant et après un essai. Le statut fonctionnel minimum doit être indiqué pour chaque essai. Une exigence supplémentaire peut être convenue entre le fournisseur et le constructeur automobile. Le constructeur et le fournisseur doivent spécifier les opérations non autorisées.
+
+**6.2 Classe A**  
+Toutes les fonctions du dispositif/système fonctionnent comme prévu pendant et après l’essai.
+
+**6.3 Classe B**  
+Toutes les fonctions du dispositif/système fonctionnent comme prévu pendant l’essai. Cependant, une ou plusieurs peuvent dépasser la tolérance spécifiée. Toutes les fonctions reviennent automatiquement à la normale après l’essai. Les fonctions de mémoire doivent rester de classe A.
+
+**6.4 Classe C**  
+Une ou plusieurs fonctions d’un dispositif/système ne fonctionnent pas comme prévu pendant l’essai mais reviennent automatiquement à un fonctionnement normal après l’essai.
+
+**6.5 Classe D**  
+Une ou plusieurs fonctions d’un dispositif/système ne fonctionnent pas comme prévu pendant l’essai et ne reviennent pas à un fonctionnement normal après l’essai tant que le dispositif/système n’est pas réinitialisé par une simple action de l’opérateur.
+
+**6.6 Classe E**  
+Une ou plusieurs fonctions d’un dispositif/système ne fonctionnent pas comme prévu pendant et après l’essai et ne peuvent pas être ramenées à un fonctionnement correct sans réparer ou remplacer le dispositif/système.
+        """
+    }
+}
+
+# Create an expander for the definition
+with st.expander("📘 Functional Status Classification"):
+    language = st.radio("Choose language", options=["English", "French"], index=0, horizontal=True)
+    st.markdown(definitions["Functional Status Classification"][language])
