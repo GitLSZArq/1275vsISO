@@ -169,6 +169,16 @@ Une ou plusieurs fonctions d’un dispositif/système ne fonctionnent pas comme 
 }
 
 # Create an expander for the definition
-with st.expander("📘 Functional Status Classification"):
+# with st.expander("📘 Functional Status Classification"):
+#    language = st.radio("Choose language", options=["English", "French"], index=0, horizontal=True)
+#    st.markdown(definitions["Functional Status Classification"][language])
+
+if 'show_def' not in st.session_state:
+    st.session_state.show_def = False
+
+if st.button("Show Functional Status Classification"):
+    st.session_state.show_def = not st.session_state.show_def
+
+if st.session_state.show_def:
     language = st.radio("Choose language", options=["English", "French"], index=0, horizontal=True)
     st.markdown(definitions["Functional Status Classification"][language])
