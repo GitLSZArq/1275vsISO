@@ -72,100 +72,162 @@ curve_category = st.sidebar.selectbox(
 
 @st.dialog("Guide d'utilisation")
 def show_tutorial():
-    st.markdown(
-        """
-        ## Bienvenue
+    guide_sections = [
+        {
+            "title": "🚀 Commencer en 60 secondes",
+            "summary": "Le chemin le plus simple pour obtenir une comparaison utile.",
+            "keywords": "démarrer debut commencer rapide première utilisation",
+            "content": """
+1. Choisissez le phénomène à étudier dans **Catégorie de courbe** à gauche.
+2. Lisez les axes : le temps est en **µs**, **ms** ou **s** selon le phénomène ; la tension est en **V**.
+3. Survolez une ligne pour obtenir une valeur précise.
+4. Cliquez sur une entrée de légende pour ne conserver que les courbes qui vous intéressent.
 
-        Cette application permet de **visualiser et comparer les enveloppes de tension**
-        définies par les normes **MIL-STD-1275** et les normes **ISO** associées aux
-        perturbations de l'alimentation électrique. Elle est conçue comme une aide à la
-        lecture et à la comparaison : la norme applicable et son édition restent la
-        référence à utiliser pour une exigence, un plan d'essai ou une décision de conformité.
+**Objectif :** identifier rapidement l'enveloppe MIL et le niveau ISO à comparer, sans perdre le contexte du graphique.
+""",
+            "tip": "Commencez toujours par vérifier l'unité de temps avant de comparer deux amplitudes.",
+        },
+        {
+            "title": "🧭 Choisir la bonne catégorie",
+            "summary": "Comprendre en un coup d'œil ce que chaque menu affiche.",
+            "keywords": "catégorie categorie spike surge ripple startup émission emission immunité immunity menu",
+            "content": """
+| Catégorie | À utiliser lorsque vous étudiez… |
+| --- | --- |
+| **Spike Emission** | les pics brefs que le système peut générer sur son alimentation. |
+| **Spike Immunity** | les impulsions rapides que le système doit supporter. |
+| **Surge Emission** | les transitoires de plus forte énergie générés par le système. |
+| **Surge Immunity** | les transitoires à supporter, notamment les cas de *load dump*. |
+| **Ripple Emission** | l'ondulation produite par le système. |
+| **Ripple Immunity** | l'ondulation que le système doit tolérer. |
+| **Startup** | les variations de tension pendant le démarrage. |
 
-        ---
+**Repère simple :** *Emission* = ce que le système peut injecter ; *Immunity* = ce qu'il doit encaisser.
+""",
+            "tip": "Si votre question commence par « que doit supporter mon équipement ? », choisissez généralement une catégorie Immunity.",
+        },
+        {
+            "title": "📈 Lire les courbes sans ambiguïté",
+            "summary": "Axes, couleurs, enveloppes et zones : les repères essentiels.",
+            "keywords": "lire courbe graphique axe temps tension volt microseconde milliseconde couleur enveloppe zone grise",
+            "content": """
+- L'axe horizontal indique le **temps** ; l'unité est toujours écrite sous le graphique.
+- L'axe vertical indique la **tension** en volts.
+- La légende identifie l'édition MIL, la norme ISO ou le niveau de sévérité.
+- Deux lignes de la même couleur peuvent être les bornes haute et basse d'une même **enveloppe** ; une seule entrée de légende représente alors les deux limites.
+- Les zones grisées rendent certaines limites plus faciles à visualiser. Elles ne constituent pas, à elles seules, une règle de conformité.
 
-        ## 1. Démarrage rapide
+Pour conclure, comparez toujours **la tension et la durée** : deux valeurs de tension identiques peuvent correspondre à des contraintes très différentes si leurs durées ne sont pas les mêmes.
+""",
+            "tip": "Une courbe haute n'est pas automatiquement « pire » : regardez aussi la borne basse, la durée et la sévérité ISO.",
+        },
+        {
+            "title": "🖱️ Interagir avec le graphique",
+            "summary": "Zoomer, isoler une courbe, restaurer la vue et exporter une image.",
+            "keywords": "zoom légende masquer afficher double cliquer survoler souris molette déplacer reset accueil télécharger exporter image",
+            "content": """
+| Action | Résultat |
+| --- | --- |
+| **Survoler une courbe** | Affiche le temps et la tension au point visé. |
+| **Cliquer dans la légende** | Masque ou affiche une famille de courbes. |
+| **Double-cliquer dans la légende** | Isole généralement la courbe choisie ; recommencez pour tout réafficher. |
+| **Faire glisser dans le graphique** | Zoome sur une zone ou déplace la vue selon l'outil sélectionné. |
+| **Utiliser la barre d'outils** | Zoom, déplacement, sélection de zone, téléchargement d'image et retour à la vue initiale. |
 
-        1. Dans la barre latérale gauche, choisissez une **catégorie de courbe**.
-        2. Lisez le titre, les axes et la légende du graphique qui s'affiche.
-        3. Survolez une courbe pour obtenir la valeur de **temps** et de **tension** à
-           l'endroit visé.
-        4. Cliquez sur un élément de la **légende** pour masquer ou réafficher cette
-           famille de courbes et faciliter la comparaison.
-        5. Utilisez les outils du graphique pour zoomer, déplacer la vue ou revenir à la
-           vue initiale.
+La barre d'outils Plotly apparaît au survol, en haut à droite du graphique. Après une exploration, utilisez l'icône **Accueil / Reset axes** pour revenir immédiatement à l'affichage de départ.
+""",
+            "tip": "Pour comparer deux normes, masquez d'abord les courbes secondaires : le graphique devient beaucoup plus lisible.",
+        },
+        {
+            "title": "🔎 Méthode de comparaison recommandée",
+            "summary": "Une mini-checklist fiable avant de tirer une conclusion.",
+            "keywords": "comparer comparaison mil iso sévérité severity edition F E D méthode conformité essai",
+            "content": """
+**Checklist en 5 gestes :**
 
-        ## 2. Choisir la bonne catégorie
+1. Sélectionnez la catégorie correspondant au phénomène étudié.
+2. Repérez l'édition MIL utile, par exemple F/E ou D.
+3. Gardez uniquement le ou les niveaux ISO pertinents à l'aide de la légende.
+4. Comparez les amplitudes, les bornes haute/basse et la durée du phénomène.
+5. Notez la catégorie, l'édition et la sévérité avant d'exporter une image ou de rédiger une conclusion.
 
-        | Catégorie | Ce que montre le graphique |
-        | --- | --- |
-        | **Spike Emission** | Les surtensions et sous-tensions brèves susceptibles d'être générées sur l'alimentation. |
-        | **Spike Immunity** | Les impulsions rapides que l'équipement doit pouvoir supporter. |
-        | **Surge Emission** | Les variations transitoires d'amplitude plus importante et de durée plus longue, incluant les limites MIL et les sévérités ISO. |
-        | **Surge Immunity** | Les contraintes de type *load dump* à supporter, avec les profils ISO centralisé et non centralisé lorsque présents. |
-        | **Ripple Emission** | Les exigences relatives à l'ondulation produite par l'équipement. |
-        | **Ripple Immunity** | Les niveaux d'ondulation auxquels l'équipement doit résister. |
-        | **Startup** | Les variations de tension associées au démarrage. |
+Cette application est une aide à la lecture. Pour une exigence contractuelle, un plan d'essai ou une décision de conformité, consultez toujours l'édition officielle de la norme applicable.
+""",
+            "tip": "Une capture de graphique doit toujours être accompagnée de la catégorie, de la norme et de la sévérité étudiées.",
+        },
+        {
+            "title": "📘 Statut fonctionnel A à E",
+            "summary": "Retrouver la signification des classes de fonctionnement pendant et après l'essai.",
+            "keywords": "statut fonctionnel classification classe A B C D E DUT english french langue",
+            "content": """
+Sous le graphique, ouvrez **« 📘 Functional Status Classification »**. Cette section rappelle les classes de fonctionnement A à E utilisées pour qualifier le comportement du DUT (*Device Under Test*) pendant et après l'essai.
 
-        Les termes *Emission* et *Immunity* sont conservés volontairement :
-        **Emission** décrit ce que le système peut injecter sur son alimentation ;
-        **Immunity** décrit ce qu'il doit tolérer sans dégradation inacceptable.
+- Utilisez le sélecteur **English / French** pour choisir la langue de lecture.
+- La classe A correspond au fonctionnement nominal ; les classes suivantes décrivent des dégradations ou des retours au fonctionnement normal selon des conditions différentes.
 
-        ## 3. Lire un graphique correctement
+Cette référence est particulièrement utile lorsque vous reliez une courbe de contrainte à un critère d'acceptation de l'équipement.
+""",
+            "tip": "Lisez la classe attendue avant l'essai : elle définit le niveau de comportement acceptable, pas seulement la tension appliquée.",
+        },
+    ]
 
-        - L'axe horizontal est le **temps**. Son unité est indiquée sous le graphique :
-          microsecondes (µs), millisecondes (ms) ou secondes (s) selon le phénomène.
-        - L'axe vertical est la **tension**, exprimée en volts (V).
-        - Chaque couleur, style de trait ou zone correspond à une exigence, une édition
-          de norme ou un niveau de sévérité identifié dans la légende.
-        - Les deux lignes d'une même couleur peuvent former une **enveloppe** : elles
-          représentent alors une limite haute et une limite basse, même si une seule
-          entrée apparaît dans la légende.
-        - Les zones grisées servent à rendre les limites visuellement plus lisibles ;
-          elles ne remplacent pas l'interprétation de la norme.
-
-        ## 4. Utiliser les interactions du graphique
-
-        - **Survoler** : affiche les coordonnées précises de la courbe sous le pointeur.
-        - **Cliquer dans la légende** : masque ou affiche une courbe ou un groupe de
-          courbes. Cliquez de nouveau pour le réafficher.
-        - **Double-cliquer dans la légende** : isole généralement la courbe sélectionnée ;
-          double-cliquez à nouveau pour tout réafficher.
-        - **Faire glisser dans le graphique** : zoome sur une zone ou déplace la vue,
-          selon l'outil actif.
-        - **Molette** : permet de zoomer lorsque le navigateur le prend en charge.
-        - **Barre d'outils en haut à droite du graphique** : elle apparaît au survol et
-          permet notamment de zoomer, dézoomer, déplacer la vue, sélectionner une zone,
-          télécharger l'image et revenir à l'affichage initial. L'icône *Accueil* ou
-          *Reset axes* annule les zooms et déplacements.
-
-        ## 5. Comparer les normes sans se tromper
-
-        1. Commencez par isoler l'édition MIL concernée (par exemple F/E ou D).
-        2. Ajoutez ensuite la ou les courbes ISO correspondant à la sévérité étudiée.
-        3. Comparez les amplitudes **et** les durées : une tension identique n'implique
-           pas nécessairement une contrainte équivalente si la durée diffère.
-        4. Vérifiez systématiquement l'unité de temps affichée avant toute conclusion.
-        5. Consultez le texte officiel de la norme avant de retenir une limite pour un
-           essai, une spécification ou une validation produit.
-
-        ## 6. Classification du statut fonctionnel
-
-        Sous le graphique, ouvrez **« 📘 Functional Status Classification »** pour
-        consulter les classes de fonctionnement A à E. Sélectionnez **English** ou
-        **French** pour changer la langue de cette référence. Cette section aide à
-        qualifier le comportement du DUT (*Device Under Test*) pendant et après l'essai.
-
-        ## 7. Bonnes pratiques
-
-        - Notez la catégorie, l'édition de norme, la sévérité et la date de consultation
-          lorsque vous capturez un graphique.
-        - Utilisez le téléchargement d'image du graphique pour joindre une comparaison à
-          une revue technique ; indiquez toujours la source normative dans votre document.
-        - Si une courbe ou une valeur semble ambiguë, revenez à la vue initiale puis
-          vérifiez la légende, les unités et l'édition de norme.
-        """
+    st.markdown("## Votre guide, à votre rythme")
+    st.caption(
+        "Une aide visuelle pour trouver la bonne courbe, lire le graphique et comparer les normes en confiance."
     )
+
+    first_step, second_step, third_step = st.columns(3)
+    with first_step:
+        st.info("**1 · Choisir**\n\nSélectionnez le phénomène à étudier.")
+    with second_step:
+        st.info("**2 · Explorer**\n\nSurvolez, masquez et zoomez sur les courbes.")
+    with third_step:
+        st.info("**3 · Comparer**\n\nVérifiez amplitudes, durées et sévérités.")
+
+    st.divider()
+    search_column, navigation_column = st.columns([3, 2])
+    with search_column:
+        search = st.text_input(
+            "🔎 Rechercher dans le guide",
+            placeholder="Ex. zoom, spike, export, classe A, load dump…",
+        ).strip().lower()
+    with navigation_column:
+        destination = st.selectbox(
+            "🧭 Aller directement à",
+            ["✨ Voir tout le guide"] + [section["title"] for section in guide_sections],
+        )
+
+    def render_section(section, expanded=False):
+        with st.expander(section["title"], expanded=expanded):
+            st.caption(section["summary"])
+            st.markdown(section["content"])
+            st.success(f"💡 Conseil : {section['tip']}")
+
+    if search:
+        matching_sections = [
+            section for section in guide_sections
+            if search in " ".join(
+                (section["title"], section["summary"], section["keywords"], section["content"])
+            ).lower()
+        ]
+        if matching_sections:
+            st.success(f"{len(matching_sections)} rubrique(s) trouvée(s) pour « {search} ».")
+            for section in matching_sections:
+                render_section(section, expanded=True)
+        else:
+            st.warning(
+                "Aucune rubrique ne correspond exactement à cette recherche. "
+                "Essayez par exemple : zoom, légende, émission, immunité, ISO ou classe A."
+            )
+    elif destination != "✨ Voir tout le guide":
+        selected_section = next(
+            section for section in guide_sections if section["title"] == destination
+        )
+        render_section(selected_section, expanded=True)
+    else:
+        st.markdown("### Les rubriques du guide")
+        for index, section in enumerate(guide_sections):
+            render_section(section, expanded=index == 0)
 
 
 if st.sidebar.button("📖 Ouvrir le guide d'utilisation", use_container_width=True):
