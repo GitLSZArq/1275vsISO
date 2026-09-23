@@ -1,7 +1,10 @@
 import streamlit as st
 
 # Streamlit App Configuration
-st.set_page_config(page_title="Voltage Standard Curve Viewer", layout="wide")
+st.set_page_config(
+    page_title="Comparaison entre MIL-STD-1275 et ISO",
+    layout="wide",
+)
 
 # Inject meta viewport and CSS to force full height
 st.markdown(
@@ -34,7 +37,7 @@ st.markdown(
 
 
 # Title
-st.title("Voltage Standard Curve Viewer")
+st.title("Comparaison entre MIL-STD-1275 et ISO")
 
 from plot_functions import (
     plot_spike_emission_explication_2,
@@ -54,7 +57,7 @@ from plot_functions import (
 
 # Sidebar for Curve Type Selection
 curve_category = st.sidebar.selectbox(
-    "Select Curve Category:",
+    "Catégorie de courbe :",
     (
         "Spike Emission",
         "Spike Immunity",
@@ -66,58 +69,133 @@ curve_category = st.sidebar.selectbox(
     )
 )
 
-# Understanding Type Selection
-understanding_type = st.sidebar.radio(
-    "Choose Understanding Type:",
-    ("Explication 1", "Explication 2")
-)
+
+@st.dialog("Guide d'utilisation")
+def show_tutorial():
+    st.markdown(
+        """
+        ## Bienvenue
+
+        Cette application permet de **visualiser et comparer les enveloppes de tension**
+        définies par les normes **MIL-STD-1275** et les normes **ISO** associées aux
+        perturbations de l'alimentation électrique. Elle est conçue comme une aide à la
+        lecture et à la comparaison : la norme applicable et son édition restent la
+        référence à utiliser pour une exigence, un plan d'essai ou une décision de conformité.
+
+        ---
+
+        ## 1. Démarrage rapide
+
+        1. Dans la barre latérale gauche, choisissez une **catégorie de courbe**.
+        2. Lisez le titre, les axes et la légende du graphique qui s'affiche.
+        3. Survolez une courbe pour obtenir la valeur de **temps** et de **tension** à
+           l'endroit visé.
+        4. Cliquez sur un élément de la **légende** pour masquer ou réafficher cette
+           famille de courbes et faciliter la comparaison.
+        5. Utilisez les outils du graphique pour zoomer, déplacer la vue ou revenir à la
+           vue initiale.
+
+        ## 2. Choisir la bonne catégorie
+
+        | Catégorie | Ce que montre le graphique |
+        | --- | --- |
+        | **Spike Emission** | Les surtensions et sous-tensions brèves susceptibles d'être générées sur l'alimentation. |
+        | **Spike Immunity** | Les impulsions rapides que l'équipement doit pouvoir supporter. |
+        | **Surge Emission** | Les variations transitoires d'amplitude plus importante et de durée plus longue, incluant les limites MIL et les sévérités ISO. |
+        | **Surge Immunity** | Les contraintes de type *load dump* à supporter, avec les profils ISO centralisé et non centralisé lorsque présents. |
+        | **Ripple Emission** | Les exigences relatives à l'ondulation produite par l'équipement. |
+        | **Ripple Immunity** | Les niveaux d'ondulation auxquels l'équipement doit résister. |
+        | **Startup** | Les variations de tension associées au démarrage. |
+
+        Les termes *Emission* et *Immunity* sont conservés volontairement :
+        **Emission** décrit ce que le système peut injecter sur son alimentation ;
+        **Immunity** décrit ce qu'il doit tolérer sans dégradation inacceptable.
+
+        ## 3. Lire un graphique correctement
+
+        - L'axe horizontal est le **temps**. Son unité est indiquée sous le graphique :
+          microsecondes (µs), millisecondes (ms) ou secondes (s) selon le phénomène.
+        - L'axe vertical est la **tension**, exprimée en volts (V).
+        - Chaque couleur, style de trait ou zone correspond à une exigence, une édition
+          de norme ou un niveau de sévérité identifié dans la légende.
+        - Les deux lignes d'une même couleur peuvent former une **enveloppe** : elles
+          représentent alors une limite haute et une limite basse, même si une seule
+          entrée apparaît dans la légende.
+        - Les zones grisées servent à rendre les limites visuellement plus lisibles ;
+          elles ne remplacent pas l'interprétation de la norme.
+
+        ## 4. Utiliser les interactions du graphique
+
+        - **Survoler** : affiche les coordonnées précises de la courbe sous le pointeur.
+        - **Cliquer dans la légende** : masque ou affiche une courbe ou un groupe de
+          courbes. Cliquez de nouveau pour le réafficher.
+        - **Double-cliquer dans la légende** : isole généralement la courbe sélectionnée ;
+          double-cliquez à nouveau pour tout réafficher.
+        - **Faire glisser dans le graphique** : zoome sur une zone ou déplace la vue,
+          selon l'outil actif.
+        - **Molette** : permet de zoomer lorsque le navigateur le prend en charge.
+        - **Barre d'outils en haut à droite du graphique** : elle apparaît au survol et
+          permet notamment de zoomer, dézoomer, déplacer la vue, sélectionner une zone,
+          télécharger l'image et revenir à l'affichage initial. L'icône *Accueil* ou
+          *Reset axes* annule les zooms et déplacements.
+
+        ## 5. Comparer les normes sans se tromper
+
+        1. Commencez par isoler l'édition MIL concernée (par exemple F/E ou D).
+        2. Ajoutez ensuite la ou les courbes ISO correspondant à la sévérité étudiée.
+        3. Comparez les amplitudes **et** les durées : une tension identique n'implique
+           pas nécessairement une contrainte équivalente si la durée diffère.
+        4. Vérifiez systématiquement l'unité de temps affichée avant toute conclusion.
+        5. Consultez le texte officiel de la norme avant de retenir une limite pour un
+           essai, une spécification ou une validation produit.
+
+        ## 6. Classification du statut fonctionnel
+
+        Sous le graphique, ouvrez **« 📘 Functional Status Classification »** pour
+        consulter les classes de fonctionnement A à E. Sélectionnez **English** ou
+        **French** pour changer la langue de cette référence. Cette section aide à
+        qualifier le comportement du DUT (*Device Under Test*) pendant et après l'essai.
+
+        ## 7. Bonnes pratiques
+
+        - Notez la catégorie, l'édition de norme, la sévérité et la date de consultation
+          lorsque vous capturez un graphique.
+        - Utilisez le téléchargement d'image du graphique pour joindre une comparaison à
+          une revue technique ; indiquez toujours la source normative dans votre document.
+        - Si une courbe ou une valeur semble ambiguë, revenez à la vue initiale puis
+          vérifiez la légende, les unités et l'édition de norme.
+        """
+    )
+
+
+if st.sidebar.button("📖 Ouvrir le guide d'utilisation", use_container_width=True):
+    show_tutorial()
 
 # Initialize fig variable
 fig = None
 
 # Plotting Logic
 if curve_category == "Spike Emission":
-    if understanding_type == "Explication 2":
-        fig = plot_spike_emission_explication_2()
-    elif understanding_type == "Explication 1":
-        fig = plot_spike_emission_explication_2()
+    fig = plot_spike_emission_explication_2()
 elif curve_category == "Spike Immunity":
-    if understanding_type == "Explication 2":
-        fig = plot_spike_immunity_explication_2()
-    elif understanding_type == "Explication 1":
-        fig = plot_spike_immunity_explication_1()
+    fig = plot_spike_immunity_explication_1()
 elif curve_category == "Surge Emission":
-    if understanding_type == "Explication 2":
-        fig = plot_surge_emission_explication_2()
-    elif understanding_type == "Explication 1":
-        fig = plot_surge_emission_explication_2()
+    fig = plot_surge_emission_explication_2()
 elif curve_category == "Surge Immunity":
-    if understanding_type == "Explication 2":
-        fig = plot_surge_immunity_explication_2()
-    elif understanding_type == "Explication 1":
-        fig = plot_surge_immunity_explication_1()
+    fig = plot_surge_immunity_explication_1()
 elif curve_category == "Ripple Emission":
-    if understanding_type == "Explication 2":
-        fig = plot_ripple_emission_explication_2()
-    elif understanding_type == "Explication 1":
-        fig = plot_ripple_emission_explication_2()
+    fig = plot_ripple_emission_explication_2()
 elif curve_category == "Ripple Immunity":
-    if understanding_type == "Explication 2":
-        fig = plot_ripple_immunity_explication_2()
-    elif understanding_type == "Explication 1":
-        fig = plot_ripple_immunity_explication_2()
+    fig = plot_ripple_immunity_explication_2()
 elif curve_category == "Startup":
-    if understanding_type == "Explication 2":
-        fig = plot_startup_explication_2()
-    elif understanding_type == "Explication 1":
-        fig = plot_startup_explication_2()
+    fig = plot_startup_explication_2()
 
 # Display the Plot
 if fig is not None:
     st.plotly_chart(fig, use_container_width=True)
     fig.update_layout(autosize=True)
 else:
-    st.write("Please select a valid curve type and understanding option.")
+    st.write("Veuillez sélectionner une catégorie de courbe valide.")
 
 
 # Define the bilingual definitions as a dictionary
@@ -170,5 +248,5 @@ Une ou plusieurs fonctions d’un dispositif/système ne fonctionnent pas comme 
 
 # Create an expander for the definition
 with st.expander("📘 Functional Status Classification"):
-    language = st.radio("Choose language", options=["English", "French"], index=0, horizontal=True)
+    language = st.radio("Choisis la langue", options=["English", "French"], index=0, horizontal=True)
     st.markdown(definitions["Functional Status Classification"][language])
