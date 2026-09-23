@@ -231,7 +231,7 @@ Cette référence est particulièrement utile lorsque vous reliez une courbe de 
 
 
 if st.sidebar.button("📖 Ouvrir le guide d'utilisation", use_container_width=True):
-    show_tutorial()
+    st.switch_page("pages/Guide_utilisation.py")
 
 # Initialize fig variable
 fig = None
